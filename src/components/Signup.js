@@ -24,8 +24,11 @@ const Signup = () => {
 
   return (
     <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Signup</h2>
+      <div
+        className="p-4 box text-white rounded"
+        style={{ background: "#0d2e42" }}
+      >
+        <h2 className=" font-bold text-2xl text-center mb-8">Sign Up</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -50,9 +53,9 @@ const Signup = () => {
             </Button>
           </div>
         </Form>
-      </div>
-      <div className="p-4 box mt-3 text-center">
-        Already have an account? <Link to="/">Log In</Link>
+        <div className="p-4 box mt-3 text-center">
+          Already have an account? <Link to="/">Log In</Link>
+        </div>
       </div>
     </>
   );

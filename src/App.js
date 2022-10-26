@@ -29,7 +29,7 @@ function App() {
           title: "Gagal",
           text: "Silahkan login terlebih dahulu",
         }),
-        (<Redirect to="/login" />)
+        (<Redirect to="/" />)
       );
     }
   };
@@ -47,11 +47,12 @@ function App() {
           <PrivateRoute path="/kategori=:tipe_kategori" component={Settings} />
           <PrivateRoute path="/cari_berita=:judul" component={Berita} />
           {/* </PrivateRoute> */}
-          <Container style={{ width: "400px" }}>
-            <Row>
+          <Container style={{ width: "400px" }} className="min-h-screen">
+            <Row className="flex content-center items-center justify-center h-screen">
               <Col>
-                <Route path="/" component={Login} />
-                <Route path="/signup" component={Signup} />
+                <Route path="/" exact component={Login} />
+                <Route path="/signup" exact component={Signup} />
+                <Route path="/login" exact component={Login} />
               </Col>
             </Row>
           </Container>

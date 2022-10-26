@@ -36,8 +36,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Login</h2>
+      <div className="p-4 box text-white rounded" style={{background: '#0d2e42'}}>
+        <h2 className=" font-bold text-2xl text-center mb-8">Log In</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">

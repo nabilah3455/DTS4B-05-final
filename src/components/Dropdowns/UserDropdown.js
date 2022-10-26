@@ -38,7 +38,7 @@ const UserDropdown = () => {
         }
       >
         <a
-          href="#pablo"
+          href="/"
           className={
             "text-sm py-2 px-2  block w-full whitespace-nowrap bg-transparent text-red font-bold bg-blue"
           }
