@@ -96,7 +96,7 @@ export default function Berita() {
           ) : null}
         </div>
         <div className="flex flex-wrap">
-          <div className="w-full md:w-8/12 md:px-4 mr-auto mt-6">
+          <div className="w-full md:w-8/12 md:px-4 mr-auto mt-4">
             {allData
               .filter(
                 (el) =>
@@ -110,7 +110,7 @@ export default function Berita() {
                     {el[index] === null? (
                       <img src={Icon} />
                     ) : (
-                      <div key={index} className="mt-4">
+                      <div key={index} className="mt-2">
                         <button
                           className="text-left focus:outline-none"
                           onClick={() => openLink(el.link)}

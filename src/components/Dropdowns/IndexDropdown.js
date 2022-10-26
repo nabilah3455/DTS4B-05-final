@@ -64,7 +64,7 @@ export default function IndexDropdown() {
           return (
             <Link
               key={index}
-              to="/admin/dashboard"
+              to="/home"
               className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
             >
               {el.tipe}

@@ -11,7 +11,7 @@ export default function CariBerita() {
   const histori = useHistory()
 
   const searchNews = () => {
-    histori.push('/admin/cari_berita='+search)
+    histori.push('/cari_berita='+search)
   }
 
   return (

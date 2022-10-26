@@ -36,7 +36,7 @@ export default function Navbar() {
   const histori = useHistory();
 
   const kategoriLink = (tipe) => {
-    histori.push("/admin/kategori=" + tipe);
+    histori.push("/kategori=" + tipe);
     window.location.reload()
   };
 
@@ -71,7 +71,7 @@ export default function Navbar() {
             <li className="flex items-center">
                 <a
                   className="text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold mr-4"
-                  href="/admin"
+                  href="/home"
                 >
                  Beranda
                 </a>

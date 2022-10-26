@@ -44,7 +44,7 @@ const PagesDropdown = () => {
           Admin Layout
         </span>
         <Link
-          to="/admin/dashboard"
+          to="/home/dashboard"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
@@ -52,7 +52,7 @@ const PagesDropdown = () => {
           Dashboard
         </Link>
         <Link
-          to="/admin/settings"
+          to="/home/settings"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
@@ -60,7 +60,7 @@ const PagesDropdown = () => {
           Settings
         </Link>
         <Link
-          to="/admin/tables"
+          to="/home/tables"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
@@ -68,7 +68,7 @@ const PagesDropdown = () => {
           Tables
         </Link>
         <Link
-          to="/admin/maps"
+          to="/home/maps"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
