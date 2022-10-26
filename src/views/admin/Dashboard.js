@@ -26,6 +26,13 @@ export default function Dashboard() {
     getSport();
   }, []);
 
+  window.onload = function () {
+    if (! localStorage.justOnce) {
+        localStorage.setItem("justOnce", "true");
+        window.location.reload();
+    }
+}
+
   const semuaBerita = () => {
     axios
       .get(`https://berita-indo-api.vercel.app/v1/okezone-news`)

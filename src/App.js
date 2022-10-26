@@ -28,10 +28,14 @@ function App() {
     }
   };
 
+  console.log(window.location.pathname)
+
   return (
     <>
       <UserAuthContextProvider>
-        {localStorage.getItem("dataUser") !== "null" ? (
+        {window.location.pathname !== "/" &&
+        window.location.pathname !== "/login" &&
+        window.location.pathname !== "/signup"? (
           <IndexNavbar fixed />
         ) : null}
 
@@ -53,7 +57,11 @@ function App() {
           </Container>
         </Switch>
       </UserAuthContextProvider>
-      {localStorage.getItem("dataUser") !== "null" ? <Footer /> : null}
+      {window.location.pathname !== "/" &&
+      window.location.pathname !== "/login"&&
+      window.location.pathname !== "/signup" ? (
+        <Footer />
+      ) : null}
     </>
   );
 }

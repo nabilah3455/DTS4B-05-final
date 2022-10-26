@@ -9,7 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn } = useUserAuth();
+  const { logIn, googleSignIn } = useUserAuth();
   const navigate = useHistory();
 
   const handleSubmit = async (e) => {
@@ -18,6 +18,7 @@ const Login = () => {
     try {
       await logIn(email, password);
       navigate.push("/home");
+      window.location.reload()
     } catch (err) {
       setError(err.message);
     }
