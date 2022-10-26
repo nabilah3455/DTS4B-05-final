@@ -1,12 +1,16 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
-import User from '../../assets/img/user-blank.png'
+import User from "../../assets/img/user-blank.png";
+import { useUserAuth } from "context/UserAuthContext";
+import { useHistory } from "react-router";
 
 const UserDropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
+
+  const { logOut, user } = useUserAuth();
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start",
@@ -17,70 +21,30 @@ const UserDropdown = () => {
     setDropdownPopoverShow(false);
   };
 
+  const navigate = useHistory();
+
+  const handleLogout = () => {
+    logOut();
+    navigate.push("/");
+    localStorage.removeItem("dataUser");
+  };
+
   return (
     <>
-      <a
-        className="text-blueGray-500 block"
-        href="#pablo"
-        ref={btnDropdownRef}
-        onClick={(e) => {
-          e.preventDefault();
-          dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-        }}
-      >
-        <div className="items-center flex">
-          <span className="w-10 h-10 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-            <img
-              alt="..."
-              className="w-full rounded-full align-middle border-none shadow-lg"
-              src={User}
-            />
-          </span>
-        </div>
-      </a>
       <div
         ref={popoverDropdownRef}
         className={
-          (dropdownPopoverShow ? "block " : "hidden ") +
-          "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+          "bg-white text-base z-50 float-left list-none text-left"
         }
       >
         <a
           href="#pablo"
           className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+            "text-sm py-2 px-2  block w-full whitespace-nowrap bg-transparent text-red font-bold bg-blue"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={handleLogout}
         >
-          Action
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Another action
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Something else here
-        </a>
-        <div className="h-0 my-2 border border-solid border-blueGray-100" />
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Seprated link
+          Log Out
         </a>
       </div>
     </>

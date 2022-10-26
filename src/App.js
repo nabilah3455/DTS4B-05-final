@@ -15,34 +15,49 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer";
 import Settings from "views/admin/Settings";
 import Berita from "views/admin/Berita";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function App() {
   const PrivateRoute = ({ ...props }) => {
-    if (localStorage.getItem("dataUser")) {
+    if (localStorage.getItem("dataUser") !== "null") {
       return <Route {...props} />;
     } else {
-      return alert("dsfsdf"), (<Redirect to="/login" />);
+      return (
+        Swal.fire({
+          icon: "error",
+          title: "Gagal",
+          text: "Silahkan login terlebih dahulu",
+        }),
+        (<Redirect to="/login" />)
+      );
     }
   };
+
   return (
     <>
-      {localStorage.getItem("dataUser") ? <IndexNavbar fixed /> : null}
-      <Switch>
-        <PrivateRoute path="/home" exact component={Dashboard} />
-        <PrivateRoute path="/kategori=:tipe_kategori" exact component={Settings} />
-        <PrivateRoute path="/cari_berita=:judul" exact component={Berita} />
-        <Route path="/" exact component={Login} />
-        <Container style={{ width: "400px" }}>
-          <Row>
-            <Col>
-              <UserAuthContextProvider>
-                <Route path="/signup" exact component={Signup} />
-              </UserAuthContextProvider>
-            </Col>
-          </Row>
-        </Container>
-      </Switch>
-      {localStorage.getItem("dataUser") ? <Footer /> : null}
+      <UserAuthContextProvider>
+        {localStorage.getItem("dataUser") !== "null" ? (
+          <IndexNavbar fixed />
+        ) : null}
+
+        <Switch>
+          {/* <PrivateRoute> */}
+          <PrivateRoute path="/home" component={Dashboard} />
+          <PrivateRoute path="/kategori=:tipe_kategori" component={Settings} />
+          <PrivateRoute path="/cari_berita=:judul" component={Berita} />
+          {/* </PrivateRoute> */}
+          <Container style={{ width: "400px" }}>
+            <Row>
+              <Col>
+                <Route path="/" component={Login} />
+                <Route path="/signup" component={Signup} />
+              </Col>
+            </Row>
+          </Container>
+        </Switch>
+      </UserAuthContextProvider>
+      {localStorage.getItem("dataUser") !== "null" ? <Footer /> : null}
     </>
   );
 }
