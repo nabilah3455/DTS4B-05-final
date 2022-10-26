@@ -11,6 +11,7 @@ export default function BeritaBaru({ allData }) {
     window.open(link, "_blank").focus();
   };
   return (
+    <>
     <div className="no-scroll">
       <h2 className="uppercase text-2xl font-bold text-red">Berita Terbaru</h2>
       <div
@@ -50,5 +51,6 @@ export default function BeritaBaru({ allData }) {
         })}
       </div>
     </div>
+    </>
   );
 }

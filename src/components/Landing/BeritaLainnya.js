@@ -24,7 +24,7 @@ export default function BeritaLainnya({ beritaSport }) {
             >
               <div className="flex">
                 <div className="flex-row">
-                  <span className="text-light text-xs italic">
+                  <span className="text-light text-xs italic text-black">
                     {formatter.format(Date.parse(el.isoDate))}
                   </span>
                   <br />

@@ -9,6 +9,7 @@ import BeritaBaru from "components/Landing/BeritaBaru";
 import BeritaTeknologi from "components/Landing/BeritaTeknologi";
 import BeritaLainnya from "components/Landing/BeritaLainnya";
 import Kategori from "components/Landing/Kategori";
+import Loading from "components/Loading/Loading";
 
 export default function Dashboard() {
   const [allData, setAllData] = useState([]);
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const [beritaTeknologi, setBeritaTetknologi] = useState([]);
   const [beritaSport, setBeritaSport] = useState([]);
   const [loading, setLoading] = useState(true);
+//  const {loading,setLoading} = useContext(MyDashboardContext)
 
   useEffect(() => {
     semuaBerita();
@@ -95,8 +97,13 @@ export default function Dashboard() {
     },
   ];
 
+  setTimeout(() => {
+    setLoading(false)
+  }, 3000);
+
   return (
     <>
+    {loading ? <Loading /> : null}
       <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full px-4">

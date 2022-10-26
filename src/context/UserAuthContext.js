@@ -8,8 +8,6 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import { useHistory } from "react-router";
-import Swal from "sweetalert2";
 
 const userAuthContext = createContext();
 

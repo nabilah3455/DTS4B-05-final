@@ -12,7 +12,10 @@ export default function BeritaTranding({ beritaTerbaru }) {
   };
   return (
     <>
-      <h1 className="font-bold text-5xl berita-new mb-4 mt-20 uppercase">
+      <h1
+        className="font-bold text-5xl berita-new mb-4 uppercase"
+        style={{ marginTop: "12rem" }}
+      >
         Berita Terkini
       </h1>
       <div className="grid grid-cols-2 gap-4 w-full">
@@ -26,13 +29,11 @@ export default function BeritaTranding({ beritaTerbaru }) {
                 <div className={`${index !== 0 ? "flex" : ""}`}>
                   <img
                     src={el.image.small}
-                    alt='...'
-                    width={index !== 0 ? "200" : "100%"}
-                    height={index !== 0 ? "80" : ""}
-                    className="mr-4"
+                    alt="..."
+                    className={`${index === 0 ? "hotNews" : "subNews"} mr-4`}
                   />
-                  <div className={`${index !== 0 ? "flex-row" : ""}`}>
-                    <span className="text-light text-xs italic">
+                  <div className={`${index !== 0 ? "flex-row" : ""} `}>
+                    <span className="text-light text-xs italic text-black">
                       {formatter.format(Date.parse(el.isoDate))}
                     </span>
                     <br />

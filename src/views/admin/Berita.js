@@ -1,5 +1,6 @@
 import axios from "axios";
 import CariBerita from "components/Landing/CariBerita";
+import Loading from "components/Loading/Loading";
 import React, { useEffect, useState } from "react";
 
 // components
@@ -8,15 +9,12 @@ import Icon from "../../assets/img/empty.png";
 
 export default function Berita() {
   const [allData, setAllData] = useState([]);
-  const [dataFilter, setDataFilter] = useState([]);
   const [dataTgl, setDataTgl] = useState("");
   const [loading, setLoading] = useState(true);
 
   const openLink = (link) => {
     window.open(link, "_blank").focus();
   };
-
-  let { tipe_kategori } = useParams();
 
   useEffect(() => {
     getData();
@@ -34,37 +32,6 @@ export default function Berita() {
       .catch((err) => console.log(err));
   };
 
-  const tipe = [
-    {
-      id: "breaking",
-      data: "Berita Terkini",
-    },
-    {
-      id: "sport",
-      data: "Olahraga",
-    },
-    {
-      id: "economy",
-      data: "Ekonomi",
-    },
-    {
-      id: "lifestyle",
-      data: "Gaya Hidup",
-    },
-    {
-      id: "celebrity",
-      data: "Selebriti",
-    },
-    {
-      id: "bola",
-      data: "Sepak Bola",
-    },
-    {
-      id: "techno",
-      data: "Teknologi",
-    },
-  ];
-
   const handleTgl = (e) => {
     const tgl = e.target.value;
     setDataTgl(tgl);
@@ -76,6 +43,7 @@ export default function Berita() {
 
   return (
     <>
+    {loading ? <Loading /> : null}
       <div className="container mx-auto overflow-hidden pb-20">
         <h1 className="text-5xl font-bold mt-32 text-center uppercase mb-12">
           {judul}
@@ -108,7 +76,7 @@ export default function Berita() {
                   <>
                   {console.log(allData.length)}
                     {el[index] === null? (
-                      <img src={Icon} />
+                      <img src={Icon} alt='...' />
                     ) : (
                       <div key={index} className="mt-2">
                         <button

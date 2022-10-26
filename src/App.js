@@ -1,21 +1,15 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { Routes, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import ProtectedRoute from "./components/ProtectedRoute";
-import {
-  UserAuthContextProvider,
-  useUserAuth,
-} from "./context/UserAuthContext";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Dashboard from "views/admin/Dashboard";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer";
 import Settings from "views/admin/Settings";
 import Berita from "views/admin/Berita";
-import { useEffect } from "react";
 import Swal from "sweetalert2";
 
 function App() {
@@ -46,6 +40,7 @@ function App() {
           <PrivateRoute path="/home" component={Dashboard} />
           <PrivateRoute path="/kategori=:tipe_kategori" component={Settings} />
           <PrivateRoute path="/cari_berita=:judul" component={Berita} />
+          {/* </DashboardProvider> */}
           {/* </PrivateRoute> */}
           <Container style={{ width: "400px" }} className="min-h-screen">
             <Row className="flex content-center items-center justify-center h-screen">
